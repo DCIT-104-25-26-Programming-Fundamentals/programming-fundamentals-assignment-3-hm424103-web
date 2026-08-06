@@ -49,8 +49,8 @@ function isPrime(number) {
     return false;
   }
 
-  for (let divisor = 2; divisor <= Math.sqrt(number); divisor += 1) {
-    if (number % divisor === 0) {
+  for (let i = 2; i <= Math.sqrt(number); i += 1) {
+    if (number % i === 0) {
       return false;
     }
   }
@@ -69,3 +69,4 @@ function main() {
 }
 
 main();
+
