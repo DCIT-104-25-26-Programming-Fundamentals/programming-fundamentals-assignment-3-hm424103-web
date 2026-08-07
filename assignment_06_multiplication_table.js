@@ -56,7 +56,56 @@
 
 //
 // =============================================================================
-// YOUR CODE BELOW — remove the // symbols from the scaffold and fill it in
+// YOUR CODE BELOW
 // =============================================================================
 
+const readlineSync = require('readline-sync');
+
+function readPositiveInteger(prompt) {
+  while (true) {
+    const inputValue = readlineSync.question(prompt);
+    const number = parseInt(inputValue, 10);
+
+    if (!Number.isNaN(number) && number > 0) {
+      return number;
+    }
+
+    console.log('Please enter a valid positive integer.');
+  }
+}
+
+function printTable(number) {
+  console.log(`\nMultiplication Table for ${number}:`);
+
+  for (let i = 1; i <= 12; i += 1) {
+    const result = number * i;
+    console.log(`${number} x ${i} = ${result}`);
+  }
+}
+
+function runPartA() {
+  console.log('=== Part A — Single Table ===');
+  const number = readPositiveInteger('Enter a number: ');
+  printTable(number);
+}
+
+function runPartB() {
+  console.log('\n=== Part B — Tables from 1 to N ===');
+  const limit = readPositiveInteger('Enter a number N: ');
+
+  for (let i = 1; i <= limit; i += 1) {
+    printTable(i);
+
+    if (i < limit) {
+      console.log('---------------------------');
+    }
+  }
+}
+
+function main() {
+  runPartA();
+  runPartB();
+}
+
+main();
 
