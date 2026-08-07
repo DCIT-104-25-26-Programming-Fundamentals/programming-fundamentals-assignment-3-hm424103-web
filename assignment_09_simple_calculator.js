@@ -71,7 +71,138 @@
 
 //
 // =============================================================================
-// YOUR CODE BELOW — remove the // symbols from the scaffold and fill it in
+// YOUR CODE BELOW
 // =============================================================================
 
+const readlineSync = require('readline-sync');
+
+function displayMenu() {
+  console.log('\n============================');
+  console.log('      SIMPLE CALCULATOR');
+  console.log('============================');
+  console.log('1. Addition');
+  console.log('2. Subtraction');
+  console.log('3. Multiplication');
+  console.log('4. Division');
+  console.log('5. Modulus');
+  console.log('6. Exponentiation');
+  console.log('7. Quit');
+}
+
+function readNumber(prompt) {
+  const value = parseFloat(readlineSync.question(prompt));
+
+  if (Number.isNaN(value)) {
+    console.log('Invalid number.');
+    return null;
+  }
+
+  return value;
+}
+
+function addition() {
+  const first = readNumber('Enter first number: ');
+  const second = readNumber('Enter second number: ');
+
+  if (first === null || second === null) {
+    return;
+  }
+
+  console.log(`Result: ${first} + ${second} = ${(first + second).toFixed(2)}`);
+}
+
+function subtraction() {
+  const first = readNumber('Enter first number: ');
+  const second = readNumber('Enter second number: ');
+
+  if (first === null || second === null) {
+    return;
+  }
+
+  console.log(`Result: ${first} - ${second} = ${(first - second).toFixed(2)}`);
+}
+
+function multiplication() {
+  const first = readNumber('Enter first number: ');
+  const second = readNumber('Enter second number: ');
+
+  if (first === null || second === null) {
+    return;
+  }
+
+  console.log(`Result: ${first} * ${second} = ${(first * second).toFixed(2)}`);
+}
+
+function division() {
+  const first = readNumber('Enter first number: ');
+  const second = readNumber('Enter second number: ');
+
+  if (first === null || second === null) {
+    return;
+  }
+
+  if (second === 0) {
+    console.log('Error: Cannot divide by zero.');
+    return;
+  }
+
+  console.log(`Result: ${first} / ${second} = ${(first / second).toFixed(2)}`);
+}
+
+function modulus() {
+  const first = readNumber('Enter first number: ');
+  const second = readNumber('Enter second number: ');
+
+  if (first === null || second === null) {
+    return;
+  }
+
+  if (second === 0) {
+    console.log('Error: Cannot divide by zero.');
+    return;
+  }
+
+  console.log(`Result: ${first} % ${second} = ${(first % second).toFixed(2)}`);
+}
+
+function exponentiation() {
+  const first = readNumber('Enter first number: ');
+  const second = readNumber('Enter second number: ');
+
+  if (first === null || second === null) {
+    return;
+  }
+
+  console.log(`Result: ${first} ** ${second} = ${(first ** second).toFixed(2)}`);
+}
+
+function main() {
+  let running = true;
+
+  while (running) {
+    displayMenu();
+    const choice = readlineSync.question('Select an operation (1-7): ');
+
+    if (choice === '1') {
+      addition();
+    } else if (choice === '2') {
+      subtraction();
+    } else if (choice === '3') {
+      multiplication();
+    } else if (choice === '4') {
+      division();
+    } else if (choice === '5') {
+      modulus();
+    } else if (choice === '6') {
+      exponentiation();
+    } else if (choice === '7') {
+      console.log('Goodbye!');
+      running = false;
+    } else {
+      console.log('Invalid choice. Please enter a number from 1 to 7.');
+    }
+  }
+}
+
+main();
 
